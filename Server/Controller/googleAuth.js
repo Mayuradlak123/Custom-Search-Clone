@@ -15,7 +15,9 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser(function(user, done) {
     done(null, user);
 });
-const GoogleStrategy = require('passport-google-oauth2').Strategy;
+const GoogleStrategy = require('passport-google-oauth20').Strategy
+
+
 passport.use(new GoogleStrategy({
         clientID: CLIENT_ID,
         clientSecret: CLIENT_SECRET,

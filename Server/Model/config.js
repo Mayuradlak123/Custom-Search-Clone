@@ -8,8 +8,9 @@ const connection = mysql.createConnection({
     host: HOST,
     user: "root",
     password: PASSWORD,
-    database: "google",
+    database: "users",
 })
+console.log(connection.config);
 connection.connect((err, res) => {
     if (err) {
         console.log("Failed to connect with Database ");
