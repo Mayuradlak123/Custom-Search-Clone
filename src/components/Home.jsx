@@ -1,4 +1,5 @@
 import React,{useState} from "react";
+
 import { FaSistrix, FaMicrophone } from "react-icons/fa";
 import GoogleIcon from "../images/googleLogo.png"
 const Home = (props) => {
@@ -8,6 +9,7 @@ const Home = (props) => {
   };
   return (
     <div className="home">
+    
       <div className="home__container">
         <div className="home__logo">
           <img src={GoogleIcon} alt="Logo" />
