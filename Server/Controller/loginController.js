@@ -26,8 +26,11 @@ const loginController = (request, response) => {
                     bcrypt.compare(password, res[0].pass, function(err, result) {
                         if (result === true && res[0].email === email) {
                             response.status(200).json({ massage: "User Logged in Successfullly" })
+                            console.log("User Logged In Successfully ")
+                        } else {
+                            console.log("Emai is Not Register");
+                            response.status(400)
                         }
-                        console.log("User Logged In Successfully ")
                     })
                 } else {
                     console.log("Invalid Credential");

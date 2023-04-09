@@ -48,6 +48,7 @@ const registerController = (request, response) => {
             if (res.length > 0) {
                 response.json({ massage: "Email is Already Register" })
                 console.log("Is Response", res.length);
+                console.log(res);
                 return;
             } else {
                 // Hahing of Password
@@ -69,6 +70,7 @@ const registerController = (request, response) => {
                         message: 'Success!',
                         data: true,
                     });
+
                     console.log("User Registered Successfully ");
 
                 })

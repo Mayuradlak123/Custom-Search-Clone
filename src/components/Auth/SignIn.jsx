@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-
+import {Link} from "react-router-dom"
 function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const submitHandler = async (e) => {
+    e.preventDefault();
     const Warning = document.getElementById("warn");
     if (email.length === 0 || password.length === 0) {
       Warning.innerText = "Invailid credential";
@@ -22,17 +23,18 @@ function SignIn() {
         body: JSON.stringify(parseData),
       }).then((response)=>{
         if(response.status===200){
-          alert("Logged in Successfull")
+          window.open("http://localhost:3001/")
+        
           console.log(response);
+          localStorage.setItem("isVerify","Verified"); 
+          alert("Logged in Successfull")
         }
         else{
+          alert("Wrong email or password")
           Warning.innerText = "Wrong email or password";
         }
       });
-
     }
-
-    e.preventDefault();
   };
   return (
     <div className="signin-container">
@@ -52,7 +54,7 @@ function SignIn() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <p id="warn"></p>
-        <button>Sign In</button>
+<button role="submit">Sign In</button>
       </form>
     </div>
   );

@@ -38,9 +38,10 @@ function SignUp() {
 console.log(res.status);
       window.localStorage.setItem("email", parseData.email);
       window.localStorage.setItem("name", parseData.name);
+      // localStorage.setItem("isVerify","Verified"); 
       alert("User Registered Successfully");
       setTimeout(() => {
-        // window.location.reload();
+        window.open("http://localhost:3001/signin");
       }, 1000);
     });
     
