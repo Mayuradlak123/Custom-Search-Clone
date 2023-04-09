@@ -268,8 +268,8 @@ body {
     flex-direction: column;
     padding: 2%;
     border-radius: 2vh;
-    height: 50vh;
-    justify-content: space-between;
+    height: 80vh;
+    /* justify-content: space-between; */
     align-items: center;
 }
 
