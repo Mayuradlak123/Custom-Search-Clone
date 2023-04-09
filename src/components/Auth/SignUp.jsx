@@ -35,26 +35,15 @@ function SignUp() {
       body: JSON.stringify(parseData),
     }).then((res) => {
       console.log(parseData);
+console.log(res.status);
       window.localStorage.setItem("email", parseData.email);
       window.localStorage.setItem("name", parseData.name);
       alert("User Registered Successfully");
       setTimeout(() => {
-        window.location.reload();
+        // window.location.reload();
       }, 1000);
     });
-    //    await axios
-    //       .post("http://localhost:3000/register", {
-
-    //         body: parseData,
-    //       })
-    //       .then((res) => {
-    //         console.log(parseData);
-    //         alert("User Registered Successfully");
-    //         window.location.reload();
-    //       })
-    //       .catch((er) => {
-    //         alert("Failed to Register User");
-    //       });
+    
   };
   return (
     <div className="signup-container">

@@ -1,26 +1,42 @@
-const config = require('../Model/config');
-const express = require('express');
+const config = require("../Model/config");
+const bcrypt = require('bcrypt');
+const helmet = require('helmet');
+const cors = require('cors');
+
+const express = require("express");
+
 const app = express();
+app.use(express.json());
+app.use(cors());
 
-const loginController = (req, resp) => {
+const loginController = (request, response) => {
+    const { email, password } = request.body;
 
-    var email = "mayuradlak030@gmail.com";
-    const check = `SELECT * FROM signup WHERE email="${email}";`;
-    config.query(check, (err, res) => {
-        if (err) {
-            console.log("Failed to fetch Data ", err);
-            resp.send("Failed to fetch Data ")
-        } else {
-
-            if (res.length > 0) {
-                resp.redirect("/auth/google/success")
-                console.log("Is Response", res.length);
-                return;
+    if (!email || !password) {
+        response.status(400).json({ massage: "All Field Required" });
+        console.log("Email and Password is Require");
+        return;
+    } else {
+        const SQL = `SELECT * FROM users WHERE email="${email}";`;
+        config.query(SQL, async(err, res) => {
+            if (err) {
+                console.log("Failed to fetch Database ");
             } else {
-                resp.redirect("/");
-            }
-        }
-    })
-};
+                if (res.length > 0) {
+                    bcrypt.compare(password, res[0].pass, function(err, result) {
+                        if (result === true && res[0].email === email) {
+                            response.status(200).json({ massage: "User Logged in Successfullly" })
+                        }
+                        console.log("User Logged In Successfully ")
+                    })
+                } else {
+                    console.log("Invalid Credential");
+                    response.status(400).json({ massage: "Invalid Credential" })
 
+                }
+            }
+        })
+        console.log();
+    }
+}
 module.exports = loginController;

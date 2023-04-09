@@ -65,24 +65,12 @@ const registerController = (request, response) => {
                     }
 
                     var textMsg = "We are thrilled to have you as a new member of our content community! Thank you for registering with us";
-                    // Email API for Sending Welcome Mail 
-                    // const sendmail = require('sendmail')();
-                    // sendmail({
-                    //     from: "mayuradlak030@gmail.com",
-                    //     to: "mahendragawande01@gmail.com",
-                    //     subject: "Registration Successfull",
-                    //     text: `<h4>${name}</h4> <p>${textMsg}<p/>`,
-                    // }, function(err, reply) {
-                    //     if (!err) {
-                    //         console.log("Email Sent SuccessFully ");
-                    //     } else {
-                    //         console.log(err);
-                    //     }
-
-                    // });
-
+                    response.status(404).json({
+                        message: 'Success!',
+                        data: true,
+                    });
                     console.log("User Registered Successfully ");
-                    response.send("Account Created Successfully ");
+
                 })
             }
 

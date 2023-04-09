@@ -1,23 +1,42 @@
-
 import React, { useState } from "react";
 
 function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
- 
-  const submitHandler = (e) => {
+
+  const submitHandler = async (e) => {
     const Warning = document.getElementById("warn");
     if (email.length === 0 || password.length === 0) {
       Warning.innerText = "Invailid credential";
+    } else {
+      const parseData = {
+        email: email,
+        password: password,
+      };
+      const URL = "http://localhost:3000/login";
+      await fetch(URL, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify(parseData),
+      }).then((response)=>{
+        if(response.status===200){
+          alert("Logged in Successfull")
+          console.log(response);
+        }
+        else{
+          Warning.innerText = "Wrong email or password";
+        }
+      });
+
     }
-    else{
-      Warning.innerText="";
-    }
+
     e.preventDefault();
   };
   return (
     <div className="signin-container">
-      <form action="" onSubmit={submitHandler}>
+      <form  onSubmit={submitHandler}>
         <h3>Sign In</h3>
         <span>
           Create new Account <a href="">Sign Up</a>{" "}

@@ -17,6 +17,7 @@ app.use(cookieSession({
 }));
 const registerController = require("../Controller/registerController");
 const loginController = require("../Controller/loginController");
+
 app.listen(PORT, () => {
     console.log("Server is Started on localhost:%s", PORT);
 })
@@ -27,11 +28,12 @@ app.get("/", (req, res) => {
 })
 app.post("/register", registerController);
 
-app.get("/auth/google", passport.authenticate("google", { scope: ["email", "profile"] }));
+// app.get("/auth/google", passport.authenticate("google", { scope: ["email", "profile"] }));
 
-app.get("/auth/google/callback", passport.authenticate("google", { successRedirect: "/auth/google/success", failureRedirect: "/auth/google/failure" }));
-app.get("/auth/google/success", (req, res) => {
-    res.send("<h3>Welcome to Home page   </h3>")
-    console.log("Google Logged In ");
-})
-app.get("/auth/google/failure", loginController);
+// app.get("/auth/google/callback", passport.authenticate("google", { successRedirect: "/auth/google/success", failureRedirect: "/auth/google/failure" }));
+// app.get("/auth/google/success", (req, res) => {
+//         res.send("<h3>Welcome to Home page   </h3>")
+//         console.log("Google Logged In ");
+//     })
+// app.get("/auth/google/failure", loginController);
+app.post("/login", loginController);
