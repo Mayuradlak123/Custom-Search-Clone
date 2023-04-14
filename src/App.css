@@ -170,25 +170,24 @@ body {
 
 .header-container .profile {
     display: flex;
-    padding: 1%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 1% 2%;
     border-radius: 10px;
-    /* background-color: #acaaaa; */
     backdrop-filter: blur(2px);
 }
 
 .header-container .profile a {
     text-decoration: none;
     display: flex;
-    margin-top: 5%;
     align-items: center;
     justify-content: center;
     color: #fff;
     background-color: red;
     width: 80%;
-    height: 5vh;
+    height: 4vh;
+    width: 7vw;
     border-radius: 10px;
 }
 
@@ -196,13 +195,11 @@ body {
     padding: 10% 15%;
     font-size: 3vh;
     width: 100%;
-    height: 100vh;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* background-color: #1a0dab; */
-    /* margin: 5%; */
 }
 
 .signup-container form {
@@ -251,10 +248,9 @@ body {
 }
 
 .signin-container {
-    /* padding: 6% 10%; */
     font-size: 3vh;
     width: 100%;
-    height: 100vh;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -268,13 +264,12 @@ body {
     flex-direction: column;
     padding: 2%;
     border-radius: 2vh;
-    height: 80vh;
-    /* justify-content: space-between; */
+    height: 50vh;
     align-items: center;
 }
 
 .signin-container form input {
-    margin: 1%;
+    margin: 2% 0%;
     padding: 1%;
     width: 70%;
     background-color: #fff;
@@ -296,6 +291,20 @@ body {
     cursor: pointer;
     border-radius: 5px;
     background-color: #1481e8;
+}
+
+.signin-container h3 {
+    color: #f2f2f2;
+    padding: 1% 0%;
+}
+
+h3 {
+    color: #f2f2f2;
+    padding: 1% 0%;
+}
+
+.signin-container span {
+    padding: 2% 0%;
 }
 
 .signin-container p {

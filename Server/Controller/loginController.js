@@ -18,6 +18,7 @@ const loginController = (request, response) => {
         return;
     } else {
         const SQL = `SELECT * FROM users WHERE email="${email}";`;
+
         config.query(SQL, async(err, res) => {
             if (err) {
                 console.log("Failed to fetch Database ");
@@ -25,8 +26,8 @@ const loginController = (request, response) => {
                 if (res.length > 0) {
                     bcrypt.compare(password, res[0].pass, function(err, result) {
                         if (result === true && res[0].email === email) {
-                            response.status(200).json({ massage: "User Logged in Successfullly" })
-                            console.log("User Logged In Successfully ")
+                            response.send(JSON.stringify(res[0]))
+                            console.log("User Logged In Successfully ", )
                         } else {
                             console.log("Emai is Not Register");
                             response.status(400)

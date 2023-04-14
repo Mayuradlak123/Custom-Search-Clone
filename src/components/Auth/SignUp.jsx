@@ -36,8 +36,7 @@ function SignUp() {
     }).then((res) => {
       console.log(parseData);
 console.log(res.status);
-      window.localStorage.setItem("email", parseData.email);
-      window.localStorage.setItem("name", parseData.name);
+    
       // localStorage.setItem("isVerify","Verified"); 
       alert("User Registered Successfully");
       setTimeout(() => {

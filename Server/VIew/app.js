@@ -17,6 +17,7 @@ app.use(cookieSession({
 }));
 const registerController = require("../Controller/registerController");
 const loginController = require("../Controller/loginController");
+const readData = require("../Controller/readData");
 
 app.listen(PORT, () => {
     console.log("Server is Started on localhost:%s", PORT);
@@ -37,3 +38,4 @@ app.post("/register", registerController);
 //     })
 // app.get("/auth/google/failure", loginController);
 app.post("/login", loginController);
+app.get("/read/:email", readData)
