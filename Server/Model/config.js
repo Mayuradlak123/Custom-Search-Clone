@@ -2,12 +2,12 @@ const express = require('express');
 const mysql = require('mysql');
 const app = express();
 const dotenv = require('dotenv').config();
-const { DB, HOST, USERNAME, PASSWORD, PORT } = process.env;
+const { DB, HOST, DBUSERNAME, DBPASSWORD, PORT } = process.env;
 
 const connection = mysql.createConnection({
         host: HOST,
-        user: "root",
-        password: PASSWORD,
+        user: DBUSERNAME,
+        password: DBPASSWORD,
         database: "google",
     })
     // console.log(connection.config);

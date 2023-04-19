@@ -23,6 +23,7 @@ const Search = (props) => {
       if (response) {
         setResults(response.data.items);
         setInfo(response.data.searchInformation);
+        console.log(response.data.items)
       }
     } catch (error) {
       console.log(error);

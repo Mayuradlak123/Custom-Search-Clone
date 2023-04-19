@@ -28,14 +28,17 @@ app.get("/", (req, res) => {
     console.log("Starting Page ");
 })
 app.post("/register", registerController);
+app.get('/auth/google',
+    passport.authenticate('google', { scope: ['profile'] }));
 
-// app.get("/auth/google", passport.authenticate("google", { scope: ["email", "profile"] }));
+app.get('/auth/google/callback',
+    passport.authenticate('google', { failureRedirect: '/login' }),
+    function(req, res) {
+        console.log(" Successful authentication");
 
-// app.get("/auth/google/callback", passport.authenticate("google", { successRedirect: "/auth/google/success", failureRedirect: "/auth/google/failure" }));
-// app.get("/auth/google/success", (req, res) => {
-//         res.send("<h3>Welcome to Home page   </h3>")
-//         console.log("Google Logged In ");
-//     })
-// app.get("/auth/google/failure", loginController);
+        // Successful authentication, redirect home.
+        res.redirect('/');
+    });
+
 app.post("/login", loginController);
 app.get("/read/:email", readData)

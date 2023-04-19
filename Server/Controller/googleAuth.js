@@ -8,7 +8,9 @@ const {
     CALLBACK_URL,
 } = process.env;
 
-
+console.log(CLIENT_ID,
+    CLIENT_SECRET,
+    CALLBACK_URL, );
 passport.serializeUser((user, done) => {
     done(null, user);
 })
@@ -24,9 +26,8 @@ passport.use(new GoogleStrategy({
         callbackURL: CALLBACK_URL,
         passReqToCallback: true
     },
-    function(request, accessToken, refreshToken, profile, done) {
-        console.log("Google Profile");
-        console.log(profile.emails[0].value, profile.displayName);
-        done();
+    async function(accessToken, refreshToken, profile, callback) {
+        await console.log(profile.emails[0].value);
+        // callback(null, user);
     }
 ));
